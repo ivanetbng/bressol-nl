@@ -186,3 +186,15 @@ function mytheme_add_woocommerce_support() {
 }
 add_action( 'after_setup_theme', 'mytheme_add_woocommerce_support' );
 
+//Cargar el archivo css compilado
+function bressol_nl_enqueue_scripts() {
+    wp_enqueue_style( 'main-style', get_template_directory_uri() . '/css/main.css', array(), _S_VERSION );
+    wp_enqueue_script( 'bressol-nl-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+
+    if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+        wp_enqueue_script( 'comment-reply' );
+    }
+}
+add_action( 'wp_enqueue_scripts', 'bressol_nl_enqueue_scripts' );
+
+

@@ -1,4 +1,26 @@
-// Estilos específicos para la página principal
-.home-page {
-    // Añadir tus estilos aquí
+.hero-section {
+    position: relative;
+    .hero-image {
+        position: relative;
+        img {
+            width: 100%;
+            height: auto;
+        }
+        .hero-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+        }
+    }
+    .hero-text-mobile {
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 10px;
+        margin-top: 20px;
+    }
 }
