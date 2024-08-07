@@ -188,7 +188,12 @@ add_action( 'after_setup_theme', 'mytheme_add_woocommerce_support' );
 
 //Cargar el archivo css compilado
 function bressol_nl_enqueue_scripts() {
+    wp_enqueue_style( 'bootstrap-css', 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css' );
+    wp_enqueue_style( 'fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css' );
     wp_enqueue_style( 'main-style', get_template_directory_uri() . '/css/main.css', array(), _S_VERSION );
+
+    wp_enqueue_script( 'jquery' );
+    wp_enqueue_script( 'bootstrap-js', 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js', array('jquery'), null, true );
     wp_enqueue_script( 'bressol-nl-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 
     if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -196,5 +201,6 @@ function bressol_nl_enqueue_scripts() {
     }
 }
 add_action( 'wp_enqueue_scripts', 'bressol_nl_enqueue_scripts' );
+
 
 
