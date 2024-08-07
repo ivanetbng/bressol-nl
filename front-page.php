@@ -28,6 +28,50 @@ get_header();
                 </div>
             </div>
         </section>
+        
+        <!-- Categories Section -->
+        <section class="categories-section">
+            <div class="container">
+                <h2 class="section-title">Ontdenk onze collecties</h2>
+                <div class="row">
+                    <div class="col-md-3 col-sm-6">
+                        <a href="#" class="category-link">
+                            <div class="category-card">
+                                <img src="<?php echo get_template_directory_uri(); ?>/images/categories/category1.jpg" class="img-fluid" alt="Valencianse Delicatessen">
+                                <p class="category-title">Valencianse Delicatessen →</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <a href="#" class="category-link">
+                            <div class="category-card">
+                                <img src="<?php echo get_template_directory_uri(); ?>/images/categories/category2.jpg" class="img-fluid" alt="Dranken">
+                                <p class="category-title">Dranken →</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <a href="#" class="category-link">
+                            <div class="category-card">
+                                <img src="<?php echo get_template_directory_uri(); ?>/images/categories/category3.jpg" class="img-fluid" alt="Oli en smaakmakers">
+                                <p class="category-title">Oli en smaakmakers →</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <a href="#" class="category-link">
+                            <div class="category-card">
+                                <img src="<?php echo get_template_directory_uri(); ?>/images/categories/category4.jpg" class="img-fluid" alt="Zoetigheden en honing">
+                                <p class="category-title">Zoetigheden en honing →</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <a href="#" class="btn btn-primary">Alles bekijken</a>
+                </div>
+            </div>
+        </section>
     </main><!-- #main -->
 </div><!-- #primary -->
 

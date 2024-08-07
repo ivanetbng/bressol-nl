@@ -1,8 +1,72 @@
-.btn-custom {
-    background-color: $primary-color;
-    color: #fff;
+// scss/components/_buttons.scss
+
+// Botón primario
+.btn-primary {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #b3a76d;
     border: none;
+    border-radius: 5px;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+
     &:hover {
-        background-color: darken($primary-color, 10%);
+        background-color: #9c8d4f;
+    }
+}
+
+// Botón secundario
+.btn-secondary {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #6c757d;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #565e64;
+    }
+}
+
+// Botón terciario
+.btn-tertiary {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    color: #333;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #e2e6ea;
+    }
+}
+
+// Botón de enlace
+.btn-link {
+    padding: 0;
+    font-size: 1rem;
+    background-color: transparent;
+    border: none;
+    color: #007bff;
+    text-align: center;
+    text-decoration: underline;
+    display: inline-block;
+    transition: color 0.3s ease;
+
+    &:hover {
+        color: #0056b3;
     }
 }
