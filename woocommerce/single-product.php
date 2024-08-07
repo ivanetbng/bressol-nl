@@ -8,15 +8,15 @@ get_header();
         while ( have_posts() ) :
             the_post();
             global $product;
+            $product_slug = $product->get_slug();
+            $product_image_url = get_template_directory_uri() . '/images/products/' . $product_slug . '.png';
         ?>
         <section class="product-section">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="product-image">
-                            <?php if ( has_post_thumbnail() ) : ?>
-                                <?php the_post_thumbnail( 'large', array( 'class' => 'img-fluid' ) ); ?>
-                            <?php endif; ?>
+                            <img src="<?php echo esc_url( $product_image_url ); ?>" class="img-fluid" alt="<?php echo esc_attr( $product->get_name() ); ?>">
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -29,7 +29,9 @@ get_header();
                             <div class="product-quantity">
                                 <?php woocommerce_quantity_input(); ?>
                             </div>
-                            <button type="button" class="btn btn-primary btn-add-to-cart"><?php echo esc_html( $product->single_add_to_cart_text() ); ?></button>
+                            <form class="cart" action="<?php echo esc_url( apply_filters( 'woocommerce_add_to_cart_form_action', $product->get_permalink() ) ); ?>" method="post" enctype='multipart/form-data'>
+                                <button type="submit" class="btn btn-primary btn-add-to-cart"><?php echo esc_html( $product->single_add_to_cart_text() ); ?></button>
+                            </form>
                         </div>
                     </div>
                 </div>
