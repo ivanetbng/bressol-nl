@@ -7,7 +7,7 @@ get_header();
         <!-- Hero Section -->
         <section class="hero-section">
             <div class="container-fluid p-0">
-                <div class="row no-gutters">
+                <div class="row">
                     <div class="col-12">
                         <div class="hero-image">
                             <img src="<?php echo get_template_directory_uri(); ?>/images/home/hero.webp" class="img-fluid w-100" alt="Hero Image">
@@ -72,6 +72,7 @@ get_header();
                 </div>
             </div>
         </section>
+
         <!--featured category-->
          <!-- Featured Collection Section -->
          <section class="featured-collection-section">
