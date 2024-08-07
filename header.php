@@ -43,22 +43,33 @@
                                 'walker'         => new WP_Bootstrap_Navwalker(),
                             ) );
                             ?>
-                            <ul class="navbar-nav ml-auto">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#"><i class="fas fa-search"></i></a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#"><i class="fas fa-user"></i></a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#"><i class="fas fa-shopping-bag"></i></a>
-                                </li>
-                            </ul>
                         </div>
+                        <ul class="navbar-nav ml-auto d-none d-md-flex">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><i class="fas fa-search"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><i class="fas fa-user"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><i class="fas fa-shopping-bag"></i></a>
+                            </li>
+                        </ul>
                     </nav><!-- #site-navigation -->
                 </div>
             </div>
         </div>
+        <ul class="navbar-nav ml-auto d-md-none text-center">
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fas fa-search"></i></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fas fa-user"></i></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fas fa-shopping-bag"></i></a>
+            </li>
+        </ul>
     </header><!-- #masthead -->
 
     <div id="content" class="site-content">
