@@ -1,4 +1,66 @@
-// Estilos específicos para la página de producto
-.product-page {
-    // Añadir tus estilos aquí
+// scss/pages/_product.scss
+
+.product-section {
+    padding: 60px 0;
+    background-color: #f8f9fa;
+
+    .product-image {
+        text-align: center;
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    }
+
+    .product-details {
+        .product-title {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            color: #b3a76d;
+            margin-bottom: 20px;
+        }
+
+        .product-description {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .product-quantity {
+            margin-bottom: 20px;
+            label {
+                font-size: 1rem;
+                color: #333;
+                margin-right: 10px;
+            }
+
+            .form-control {
+                width: 80px;
+                display: inline-block;
+                text-align: center;
+            }
+        }
+
+        .btn-add-to-cart {
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: #b3a76d;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+                background-color: #9c8d4f;
+            }
+        }
+    }
 }
