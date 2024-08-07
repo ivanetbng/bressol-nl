@@ -202,10 +202,53 @@ function bressol_nl_enqueue_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'bressol_nl_enqueue_scripts' );
 
-//Crear la tabla de la newsletter
-function create_newsletter_table() {
+// Función para manejar la suscripción a la newsletter
+function handle_newsletter_subscription() {
+    if ( isset( $_POST['name'] ) && isset( $_POST['email'] ) && isset( $_POST['optin'] ) ) {
+        $name = sanitize_text_field( $_POST['name'] );
+        $email = sanitize_email( $_POST['email'] );
+
+        // Validar que el email no exista ya en la base de datos
+        global $wpdb;
+        $table_name = $wpdb->prefix . 'contactos';
+        $email_exists = $wpdb->get_var( $wpdb->prepare(
+            "SELECT COUNT(*) FROM $table_name WHERE email = %s",
+            $email
+        ));
+
+        if ( $email_exists ) {
+            wp_redirect( home_url() . '?subscription=exists' );
+            exit;
+        }
+
+        // Insertar datos en la base de datos de manera segura
+        $inserted = $wpdb->insert(
+            $table_name,
+            array(
+                'name'  => $name,
+                'email' => $email
+            ),
+            array(
+                '%s',
+                '%s'
+            )
+        );
+
+        if ( $inserted ) {
+            wp_redirect( home_url() . '?subscription=success' );
+        } else {
+            wp_redirect( home_url() . '?subscription=error' );
+        }
+        exit;
+    }
+}
+add_action( 'admin_post_newsletter_subscription', 'handle_newsletter_subscription' );
+add_action( 'admin_post_nopriv_newsletter_subscription', 'handle_newsletter_subscription' );
+
+// Función para crear la tabla personalizada
+function create_contacts_table() {
     global $wpdb;
-    $table_name = $wpdb->prefix . 'newsletter_subscriptions';
+    $table_name = $wpdb->prefix . 'contactos';
     $charset_collate = $wpdb->get_charset_collate();
 
     $sql = "CREATE TABLE $table_name (
@@ -218,26 +261,9 @@ function create_newsletter_table() {
     require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
     dbDelta( $sql );
 }
-add_action( 'after_setup_theme', 'create_newsletter_table' );
+add_action( 'after_setup_theme', 'create_contacts_table' );
 
 
-// Función para manejar la suscripción a la newsletter
-function handle_newsletter_subscription() {
-    if ( isset( $_POST['name'] ) && isset( $_POST['email'] ) && isset( $_POST['optin'] ) ) {
-        $name = sanitize_text_field( $_POST['name'] );
-        $email = sanitize_email( $_POST['email'] );
-
-        // Guardar los datos en la base de datos
-        global $wpdb;
-        $table_name = $wpdb->prefix . 'newsletter_subscriptions';
-        $wpdb->insert( $table_name, array( 'name' => $name, 'email' => $email ) );
-
-        wp_redirect( home_url() );
-        exit;
-    }
-}
-add_action( 'admin_post_newsletter_subscription', 'handle_newsletter_subscription' );
-add_action( 'admin_post_nopriv_newsletter_subscription', 'handle_newsletter_subscription' );
 
 
 
