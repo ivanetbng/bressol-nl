@@ -1,78 +1,39 @@
-<!doctype html>
+<!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
-    <meta charset="<?php bloginfo('charset'); ?>">
+    <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="profile" href="https://gmpg.org/xfn/11">
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-<?php wp_body_open(); ?>
-<div id="page" class="site">
-    <a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e('Skip to content', 'bressol-nl'); ?></a>
-
+    <?php wp_body_open(); ?>
     <header id="masthead" class="site-header">
         <div class="site-branding">
             <?php
-            the_custom_logo();
-            if (is_front_page() && is_home()) :
-                ?>
-                <h1 class="site-title"><a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php bloginfo('name'); ?></a></h1>
-                <?php
+            if ( has_custom_logo() ) :
+                the_custom_logo();
             else :
                 ?>
-                <p class="site-title"><a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php bloginfo('name'); ?></a></p>
+                <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+                    <h1 class="site-title"><?php bloginfo( 'name' ); ?></h1>
+                </a>
                 <?php
             endif;
-            $bressol_nl_description = get_bloginfo('description', 'display');
-            if ($bressol_nl_description || is_customize_preview()) :
-                ?>
-                <p class="site-description"><?php echo $bressol_nl_description; ?></p>
-            <?php endif; ?>
+            ?>
         </div><!-- .site-branding -->
 
         <nav id="site-navigation" class="main-navigation">
-            <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e('Primary Menu', 'bressol-nl'); ?></button>
+            <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+                <?php esc_html_e( 'Primary Menu', 'bressol-nl' ); ?>
+            </button>
             <?php
-            wp_nav_menu(array(
+            wp_nav_menu( array(
                 'theme_location' => 'menu-1',
                 'menu_id'        => 'primary-menu',
-                'walker'         => new WP_Bootstrap_Navwalker(),
-                'container'      => 'div',
-                'container_class'=> 'collapse navbar-collapse',
-                'container_id'   => 'bs-example-navbar-collapse-1',
-                'menu_class'     => 'navbar-nav mr-auto',
-                'fallback_cb'    => 'WP_Bootstrap_Navwalker::fallback',
-            ));
+            ) );
             ?>
         </nav><!-- #site-navigation -->
-
-        <!-- Language Selector -->
-        <?php
-        $current_language = isset($_COOKIE['site_language']) ? $_COOKIE['site_language'] : 'en';
-        ?>
-        <select id="language-select">
-            <option value="en" <?php selected($current_language, 'en'); ?>>English</option>
-            <option value="nl" <?php selected($current_language, 'nl'); ?>>Dutch</option>
-            <option value="es" <?php selected($current_language, 'es'); ?>>Spanish</option>
-        </select>
     </header><!-- #masthead -->
 
-    <script>
-        document.getElementById('language-select').addEventListener('change', function() {
-            var selectedLanguage = this.value;
-            var currentUrl = window.location.href;
-
-            // Remove any existing language segment
-            var newUrl = currentUrl.replace(/(\/(en|nl|es)\/)|(\?.*)|$/, function(match, p1, p2, p3) {
-                return (p3 || '') + '/' + selectedLanguage + '/';
-            });
-
-            window.location.href = newUrl;
-        });
-    </script>
-</div><!-- #page -->
-
-<?php wp_footer(); ?>
-</body>
-</html>
+    <div id="content" class="site-content">
