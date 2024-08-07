@@ -180,3 +180,9 @@ if ( defined( 'JETPACK__VERSION' ) ) {
  * Load WP Bootstrap Navwalker.
  */
 require_once get_template_directory() . '/inc/class-wp-bootstrap-navwalker.php';
+
+function mytheme_add_woocommerce_support() {
+    add_theme_support( 'woocommerce' );
+}
+add_action( 'after_setup_theme', 'mytheme_add_woocommerce_support' );
+
