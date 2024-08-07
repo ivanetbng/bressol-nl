@@ -72,6 +72,66 @@ get_header();
                 </div>
             </div>
         </section>
+        <!--featured category-->
+         <!-- Featured Collection Section -->
+         <section class="featured-collection-section">
+            <div class="container">
+                <h2 class="section-title">Hapjes voor bij de borrel</h2>
+                <div class="row">
+                    <!-- Product 1 -->
+                    <div class="col-6 col-md-2">
+                        <div class="product-card">
+                            <img src="<?php echo get_template_directory_uri(); ?>/images/products/product1.jpg" class="img-fluid" alt="Product 1">
+                            <p class="product-title">CHUPADEDOS OLIJVEN</p>
+                            <p class="product-price">€5,45 EUR</p>
+                        </div>
+                    </div>
+                    <!-- Product 2 -->
+                    <div class="col-6 col-md-2">
+                        <div class="product-card">
+                            <img src="<?php echo get_template_directory_uri(); ?>/images/products/product2.jpg" class="img-fluid" alt="Product 2">
+                            <p class="product-title">OLIJF PASTEI</p>
+                            <p class="product-price">€7,65 EUR</p>
+                        </div>
+                    </div>
+                    <!-- Product 3 -->
+                    <div class="col-6 col-md-2">
+                        <div class="product-card">
+                            <img src="<?php echo get_template_directory_uri(); ?>/images/products/product3.jpg" class="img-fluid" alt="Product 3">
+                            <p class="product-title">PEPER EN PROVENCAALSE KRUIDEN REGAÑAS</p>
+                            <p class="product-price">€3,55 EUR</p>
+                        </div>
+                    </div>
+                    <!-- Product 4 -->
+                    <div class="col-6 col-md-2">
+                        <div class="product-card">
+                            <img src="<?php echo get_template_directory_uri(); ?>/images/products/product4.jpg" class="img-fluid" alt="Product 4">
+                            <p class="product-title">GOLDEN GORDAL GEPITTE OLIJVEN</p>
+                            <p class="product-price">€6,55 EUR</p>
+                        </div>
+                    </div>
+                    <!-- Product 5 -->
+                    <div class="col-6 col-md-2">
+                        <div class="product-card">
+                            <img src="<?php echo get_template_directory_uri(); ?>/images/products/product5.jpg" class="img-fluid" alt="Product 5">
+                            <p class="product-title">GEDROOGDE TOMATENPASTE</p>
+                            <p class="product-price">€7,65 EUR</p>
+                        </div>
+                    </div>
+                    <!-- Product 6 (hidden on mobile) -->
+                    <div class="col-6 col-md-2 d-none d-md-block">
+                        <div class="product-card">
+                            <img src="<?php echo get_template_directory_uri(); ?>/images/products/product6.jpg" class="img-fluid" alt="Product 6">
+                            <p class="product-title">KNOFLOOK EN TIJM REGAÑAS</p>
+                            <p class="product-price">€3,55 EUR</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <a href="#" class="btn btn-primary">Bekijk alles</a>
+                </div>
+            </div>
+        </section>
 
         <!--Testimonios-->
         <section class="testimonials-section">
