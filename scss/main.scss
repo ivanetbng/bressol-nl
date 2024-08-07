@@ -1,0 +1,23 @@
+// Importar variables primero
+@import 'utils/variables';
+
+// Importar Bootstrap
+@import '../node_modules/bootstrap/scss/bootstrap';
+
+// Importar componentes
+@import 'components/buttons';
+@import 'components/cards';
+
+// Importar layout
+@import 'layout/header';
+@import 'layout/footer';
+@import 'layout/navigation';
+
+// Importar páginas
+@import 'pages/home';
+@import 'pages/product';
+
+// Otros estilos
+@import 'utils/mixins';
+@import 'utils/helpers';
+
