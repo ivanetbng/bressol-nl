@@ -12184,5 +12184,20 @@ textarea.form-control-lg {
 .product-section .product-details .btn-add-to-cart:hover {
   background-color: #9c8d4f;
 }
+@media (max-width: 767.98px) {
+  .product-section .product-details .product-title {
+    font-size: 2rem;
+  }
+  .product-section .product-details .product-price {
+    font-size: 1.25rem;
+  }
+  .product-section .product-details .product-description {
+    font-size: 0.9rem;
+  }
+  .product-section .product-details .btn-add-to-cart {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+  }
+}
 
 /*# sourceMappingURL=main.css.map */
