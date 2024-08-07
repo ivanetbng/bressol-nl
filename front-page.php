@@ -160,6 +160,30 @@ get_header();
             </div>
         </section>
 
+        <!--newsletter-->
+        <!-- Newsletter Section -->
+        <section class="newsletter-section">
+            <div class="container">
+                <h2 class="section-title">Suscríbete a nuestra Newsletter</h2>
+                <form class="newsletter-form">
+                    <div class="form-group">
+                        <label for="name">Nombre:</label>
+                        <input type="text" id="name" name="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                    </div>
+                    <div class="form-group form-check">
+                        <input type="checkbox" id="optin" name="optin" class="form-check-input" required>
+                        <label for="optin" class="form-check-label">Acepto recibir comunicaciones por email</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Suscribirse</button>
+                </form>
+            </div>
+        </section>
+
+
     </main><!-- #main -->
 </div><!-- #primary -->
 

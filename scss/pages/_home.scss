@@ -94,4 +94,86 @@
     }
 }
 
+.featured-collection-section {
+    padding: 60px 0;
+    background-color: #fff;
+
+    .section-title {
+        text-align: center;
+        margin-bottom: 40px;
+        font-size: 2rem;
+    }
+
+    .product-card {
+        text-align: center;
+        margin-bottom: 30px;
+
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .product-title {
+            font-size: 1rem;
+            margin-top: 10px;
+            color: #333;
+        }
+
+        .product-price {
+            font-size: 1rem;
+            color: #333;
+        }
+    }  
+}
+.newsletter-section {
+    padding: 60px 0;
+    background-color: #f8f9fa;
+    
+    .section-title {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 2rem;
+    }
+    
+    .newsletter-form {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+        .form-group {
+            margin-bottom: 15px;
+
+            label {
+                display: block;
+                margin-bottom: 5px;
+                font-weight: 500;
+            }
+
+            .form-control {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+        }
+
+        .form-check {
+            display: flex;
+            align-items: center;
+
+            .form-check-input {
+                margin-right: 10px;
+            }
+
+            .form-check-label {
+                margin: 0;
+            }
+        }        
+    }
+}
+
 
