@@ -72,6 +72,34 @@ get_header();
                 </div>
             </div>
         </section>
+
+        <!--Testimonios-->
+        <section class="testimonials-section">
+            <div class="container">
+                <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">"Producto increíble, calidad excepcional."</p>
+                            <p class="testimonial-author">- Cliente 1</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">"La mejor tienda online, entrega rápida."</p>
+                            <p class="testimonial-author">- Cliente 2</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">"Servicio al cliente excelente, muy satisfecho."</p>
+                            <p class="testimonial-author">- Cliente 3</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main><!-- #main -->
 </div><!-- #primary -->
 

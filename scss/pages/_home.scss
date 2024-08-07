@@ -64,3 +64,34 @@
     }
 }
 
+.testimonials-section {
+    padding: 60px 0;
+    background-color: #f8f9fa;
+
+    .section-title {
+        text-align: center;
+        margin-bottom: 40px;
+        font-size: 2rem;
+    }
+
+    .testimonial-card {
+        background: #fff;
+        padding: 20px;
+        border: 1px solid #eaeaea;
+        border-radius: 10px;
+        text-align: center;
+        margin-bottom: 30px;
+
+        .testimonial-text {
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .testimonial-author {
+            font-size: 0.875rem;
+            color: #6c757d;
+        }
+    }
+}
+
+
