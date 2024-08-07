@@ -202,6 +202,43 @@ function bressol_nl_enqueue_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'bressol_nl_enqueue_scripts' );
 
+//Crear la tabla de la newsletter
+function create_newsletter_table() {
+    global $wpdb;
+    $table_name = $wpdb->prefix . 'newsletter_subscriptions';
+    $charset_collate = $wpdb->get_charset_collate();
+
+    $sql = "CREATE TABLE $table_name (
+        id mediumint(9) NOT NULL AUTO_INCREMENT,
+        name tinytext NOT NULL,
+        email varchar(100) NOT NULL,
+        PRIMARY KEY  (id)
+    ) $charset_collate;";
+
+    require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+    dbDelta( $sql );
+}
+add_action( 'after_setup_theme', 'create_newsletter_table' );
+
+
+// Función para manejar la suscripción a la newsletter
+function handle_newsletter_subscription() {
+    if ( isset( $_POST['name'] ) && isset( $_POST['email'] ) && isset( $_POST['optin'] ) ) {
+        $name = sanitize_text_field( $_POST['name'] );
+        $email = sanitize_email( $_POST['email'] );
+
+        // Guardar los datos en la base de datos
+        global $wpdb;
+        $table_name = $wpdb->prefix . 'newsletter_subscriptions';
+        $wpdb->insert( $table_name, array( 'name' => $name, 'email' => $email ) );
+
+        wp_redirect( home_url() );
+        exit;
+    }
+}
+add_action( 'admin_post_newsletter_subscription', 'handle_newsletter_subscription' );
+add_action( 'admin_post_nopriv_newsletter_subscription', 'handle_newsletter_subscription' );
+
 
 
 

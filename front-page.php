@@ -161,12 +161,11 @@ get_header();
             </div>
         </section>
 
-        <!--newsletter-->
         <!-- Newsletter Section -->
         <section class="newsletter-section">
             <div class="container">
                 <h2 class="section-title">Suscríbete a nuestra Newsletter</h2>
-                <form class="newsletter-form">
+                <form class="newsletter-form" method="post" action="<?php echo esc_url( admin_url('admin-post.php') ); ?>">
                     <div class="form-group">
                         <label for="name">Nombre:</label>
                         <input type="text" id="name" name="name" class="form-control" required>
@@ -179,10 +178,12 @@ get_header();
                         <input type="checkbox" id="optin" name="optin" class="form-check-input" required>
                         <label for="optin" class="form-check-label">Acepto recibir comunicaciones por email</label>
                     </div>
+                    <input type="hidden" name="action" value="newsletter_subscription">
                     <button type="submit" class="btn btn-primary">Suscribirse</button>
                 </form>
             </div>
         </section>
+
 
 
     </main><!-- #main -->
