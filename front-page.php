@@ -39,18 +39,18 @@ get_header();
                         'taxonomy' => 'product_cat',
                         'hide_empty' => false,
                         'parent' => 0, // No mostrar subcategorías
+                        'exclude' => array(get_option('default_product_cat')), // Excluir la categoría "uncategorized"
                     ) );
 
                     if ( ! empty( $product_categories ) && ! is_wp_error( $product_categories ) ) {
                         $category_count = count( $product_categories );
-                        $col_class = $category_count <= 4 ? 'col-md-3 col-sm-6' : 'col-md-4 col-sm-6';
                         foreach ( $product_categories as $category ) {
                             $category_slug = $category->slug;
                             $category_link = get_term_link( $category );
                             $category_name = $category->name;
-                            $category_image_url = get_template_directory_uri() . '/images/categories/' . $category_slug . '.webp';
+                            $category_image_url = get_template_directory_uri() . '/images/category/' . $category_slug . '.webp';
                             ?>
-                            <div class="<?php echo $col_class; ?>">
+                            <div class="<?php echo $category_count <= 4 ? 'col-md-3 col-sm-6' : 'col-md-4 col-sm-6'; ?>">
                                 <a href="<?php echo esc_url( $category_link ); ?>" class="category-link">
                                     <div class="category-card">
                                         <img src="<?php echo esc_url( $category_image_url ); ?>" class="img-fluid" alt="<?php echo esc_attr( $category_name ); ?>">
@@ -68,7 +68,6 @@ get_header();
                 </div>
             </div>
         </section>
-
 
         <!--featured category-->
          <!-- Featured Collection Section -->
