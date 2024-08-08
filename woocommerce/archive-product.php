@@ -50,6 +50,8 @@ if ( woocommerce_product_loop() ) {
 
 	woocommerce_product_loop_start();
 
+	echo '<div class="row">'; // Añadir contenedor row de Bootstrap
+
 	if ( wc_get_loop_prop( 'total' ) ) {
 		while ( have_posts() ) {
 			the_post();
@@ -62,6 +64,8 @@ if ( woocommerce_product_loop() ) {
 			wc_get_template_part( 'content', 'product' );
 		}
 	}
+
+	echo '</div>'; // Cerrar contenedor row de Bootstrap
 
 	woocommerce_product_loop_end();
 
