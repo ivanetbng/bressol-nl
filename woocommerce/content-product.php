@@ -1,67 +1,55 @@
 <?php
-/**
- * The template for displaying product content within loops
- *
- * This template can be overridden by copying it to yourtheme/woocommerce/content-product.php.
- *
- * HOWEVER, on occasion WooCommerce will need to update template files and you
- * (the theme developer) will need to copy the new files to your theme to
- * maintain compatibility. We try to do this as little as possible, but it does
- * happen. When this occurs the version of the template file will be bumped and
- * the readme will list any important changes.
- *
- * @see     https://woocommerce.com/document/template-structure/
- * @package WooCommerce\Templates
- * @version 3.6.0
- */
-
 defined( 'ABSPATH' ) || exit;
 
 global $product;
 
-// Ensure visibility.
-if ( empty( $product ) || ! $product->is_visible() ) {
-	return;
-}
+$product_slug = $product->get_slug();
+$product_image_url = get_template_directory_uri() . '/images/products/' . $product_slug . '.png';
 ?>
-<li <?php wc_product_class( '', $product ); ?>>
-	<?php
-	/**
-	 * Hook: woocommerce_before_shop_loop_item.
-	 *
-	 * @hooked woocommerce_template_loop_product_link_open - 10
-	 */
-	do_action( 'woocommerce_before_shop_loop_item' );
 
-	/**
-	 * Hook: woocommerce_before_shop_loop_item_title.
-	 *
-	 * @hooked woocommerce_show_product_loop_sale_flash - 10
-	 * @hooked woocommerce_template_loop_product_thumbnail - 10
-	 */
-	do_action( 'woocommerce_before_shop_loop_item_title' );
+<li <?php wc_product_class(); ?>>
+    <?php
+    /**
+     * Hook: woocommerce_before_shop_loop_item.
+     *
+     * @hooked woocommerce_template_loop_product_link_open - 10
+     */
+    do_action( 'woocommerce_before_shop_loop_item' );
 
-	/**
-	 * Hook: woocommerce_shop_loop_item_title.
-	 *
-	 * @hooked woocommerce_template_loop_product_title - 10
-	 */
-	do_action( 'woocommerce_shop_loop_item_title' );
+    /**
+     * Hook: woocommerce_before_shop_loop_item_title.
+     *
+     * Removemos los hooks que muestran la imagen predeterminada y el flash de venta.
+     */
+    remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 10 );
+    remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10 );
 
-	/**
-	 * Hook: woocommerce_after_shop_loop_item_title.
-	 *
-	 * @hooked woocommerce_template_loop_rating - 5
-	 * @hooked woocommerce_template_loop_price - 10
-	 */
-	do_action( 'woocommerce_after_shop_loop_item_title' );
+    // Mostrar la imagen personalizada
+    echo '<a href="' . esc_url( get_permalink() ) . '">';
+    echo '<img src="' . esc_url( $product_image_url ) . '" alt="' . esc_attr( $product->get_name() ) . '" class="custom-product-image" />';
+    echo '</a>';
 
-	/**
-	 * Hook: woocommerce_after_shop_loop_item.
-	 *
-	 * @hooked woocommerce_template_loop_product_link_close - 5
-	 * @hooked woocommerce_template_loop_add_to_cart - 10
-	 */
-	do_action( 'woocommerce_after_shop_loop_item' );
-	?>
+    /**
+     * Hook: woocommerce_shop_loop_item_title.
+     *
+     * @hooked woocommerce_template_loop_product_title - 10
+     */
+    do_action( 'woocommerce_shop_loop_item_title' );
+
+    /**
+     * Hook: woocommerce_after_shop_loop_item_title.
+     *
+     * @hooked woocommerce_template_loop_rating - 5
+     * @hooked woocommerce_template_loop_price - 10
+     */
+    do_action( 'woocommerce_after_shop_loop_item_title' );
+
+    /**
+     * Hook: woocommerce_after_shop_loop_item.
+     *
+     * @hooked woocommerce_template_loop_product_link_close - 5
+     * @hooked woocommerce_template_loop_add_to_cart - 10
+     */
+    do_action( 'woocommerce_after_shop_loop_item' );
+    ?>
 </li>
