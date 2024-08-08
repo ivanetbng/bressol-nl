@@ -165,6 +165,23 @@ get_header();
         <section class="newsletter-section">
             <div class="container">
                 <h2 class="section-title">Suscríbete a nuestra Newsletter</h2>
+                <?php if ( isset( $_GET['subscription'] ) ): ?>
+                    <div class="container">
+                        <?php if ( $_GET['subscription'] == 'exists' ): ?>
+                            <div class="alert alert-warning" role="alert">
+                                Este email ya está suscrito.
+                            </div>
+                        <?php elseif ( $_GET['subscription'] == 'success' ): ?>
+                            <div class="alert alert-success" role="alert">
+                                Suscripción exitosa.
+                            </div>
+                        <?php elseif ( $_GET['subscription'] == 'error' ): ?>
+                            <div class="alert alert-danger" role="alert">
+                                Hubo un error en la suscripción. Por favor, intenta nuevamente.
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                <?php endif; ?>
                 <form class="newsletter-form" method="post" action="<?php echo esc_url( admin_url('admin-post.php') ); ?>">
                     <div class="form-group">
                         <label for="name">Nombre:</label>
@@ -183,6 +200,7 @@ get_header();
                 </form>
             </div>
         </section>
+
 
 
 

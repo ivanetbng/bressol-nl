@@ -204,20 +204,20 @@ add_action( 'wp_enqueue_scripts', 'bressol_nl_enqueue_scripts' );
 
 // Función para manejar la suscripción a la newsletter
 function handle_newsletter_subscription() {
-    if ( isset( $_POST['name'] ) && isset( $_POST['email'] ) && isset( $_POST['optin'] ) ) {
-        $name = sanitize_text_field( $_POST['name'] );
-        $email = sanitize_email( $_POST['email'] );
+    if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['optin'])) {
+        $name = sanitize_text_field($_POST['name']);
+        $email = sanitize_email($_POST['email']);
 
         // Validar que el email no exista ya en la base de datos
         global $wpdb;
         $table_name = $wpdb->prefix . 'contactos';
-        $email_exists = $wpdb->get_var( $wpdb->prepare(
+        $email_exists = $wpdb->get_var($wpdb->prepare(
             "SELECT COUNT(*) FROM $table_name WHERE email = %s",
             $email
         ));
 
-        if ( $email_exists ) {
-            wp_redirect( home_url() . '?subscription=exists' );
+        if ($email_exists) {
+            wp_redirect(home_url() . '?subscription=exists');
             exit;
         }
 
@@ -225,25 +225,31 @@ function handle_newsletter_subscription() {
         $inserted = $wpdb->insert(
             $table_name,
             array(
-                'name'  => $name,
-                'email' => $email
+                'name'         => $name,
+                'email'        => $email,
+                'double_optin' => 0, // Inicialmente no confirmado
+                // Aquí se pueden agregar más datos en el futuro
             ),
             array(
                 '%s',
-                '%s'
+                '%s',
+                '%d',
+                // Aquí se deben agregar los formatos de datos adicionales
             )
         );
 
-        if ( $inserted ) {
-            wp_redirect( home_url() . '?subscription=success' );
+        if ($inserted) {
+            wp_redirect(home_url() . '?subscription=success');
         } else {
-            wp_redirect( home_url() . '?subscription=error' );
+            wp_redirect(home_url() . '?subscription=error');
         }
         exit;
     }
 }
-add_action( 'admin_post_newsletter_subscription', 'handle_newsletter_subscription' );
-add_action( 'admin_post_nopriv_newsletter_subscription', 'handle_newsletter_subscription' );
+add_action('admin_post_newsletter_subscription', 'handle_newsletter_subscription');
+add_action('admin_post_nopriv_newsletter_subscription', 'handle_newsletter_subscription');
+
+
 
 // Función para crear la tabla personalizada
 function create_contacts_table() {
@@ -255,13 +261,28 @@ function create_contacts_table() {
         id mediumint(9) NOT NULL AUTO_INCREMENT,
         name tinytext NOT NULL,
         email varchar(100) NOT NULL,
+        phone varchar(20),
+        country varchar(50),
+        prefix varchar(5),
+        language varchar(20),
+        address text,
+        type varchar(20),
+        company_name varchar(100),
+        job_title varchar(100),
+        birthday date,
+        interests text,
+        double_optin boolean DEFAULT FALSE,
+        created_at datetime DEFAULT CURRENT_TIMESTAMP,
+        updated_at datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
         PRIMARY KEY  (id)
     ) $charset_collate;";
 
-    require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
-    dbDelta( $sql );
+    require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+    dbDelta($sql);
 }
-add_action( 'after_setup_theme', 'create_contacts_table' );
+add_action('after_setup_theme', 'create_contacts_table');
+
+
 
 
 
