@@ -3,6 +3,8 @@ defined( 'ABSPATH' ) || exit;
 
 get_header( 'shop' );
 
+echo '<div class="container">'; // Abrir contenedor Bootstrap
+
 do_action( 'woocommerce_before_main_content' );
 
 do_action( 'woocommerce_shop_loop_header' );
@@ -10,7 +12,7 @@ do_action( 'woocommerce_shop_loop_header' );
 if ( woocommerce_product_loop() ) {
     do_action( 'woocommerce_before_shop_loop' );
 
-    echo '<div class="container"><div class="row">'; // Añadir contenedor y row de Bootstrap
+    echo '<div class="row">'; // Añadir row de Bootstrap
 
     woocommerce_product_loop_start();
 
@@ -24,7 +26,7 @@ if ( woocommerce_product_loop() ) {
 
     woocommerce_product_loop_end();
 
-    echo '</div></div>'; // Cerrar contenedor y row de Bootstrap
+    echo '</div>'; // Cerrar row de Bootstrap
 
     do_action( 'woocommerce_after_shop_loop' );
 } else {
@@ -34,5 +36,7 @@ if ( woocommerce_product_loop() ) {
 do_action( 'woocommerce_after_main_content' );
 
 do_action( 'woocommerce_sidebar' );
+
+echo '</div>'; // Cerrar contenedor Bootstrap
 
 get_footer( 'shop' );
