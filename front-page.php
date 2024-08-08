@@ -34,44 +34,41 @@ get_header();
             <div class="container">
                 <h2 class="section-title">Ontdenk onze collecties</h2>
                 <div class="row">
-                    <div class="col-md-3 col-sm-6">
-                        <a href="#" class="category-link">
-                            <div class="category-card">
-                                <img src="<?php echo get_template_directory_uri(); ?>/images/categories/category1.jpg" class="img-fluid" alt="Valencianse Delicatessen">
-                                <p class="category-title">Valencianse Delicatessen →</p>
+                    <?php
+                    $product_categories = get_terms( array(
+                        'taxonomy' => 'product_cat',
+                        'hide_empty' => false,
+                        'parent' => 0, // No mostrar subcategorías
+                    ) );
+
+                    if ( ! empty( $product_categories ) && ! is_wp_error( $product_categories ) ) {
+                        $category_count = count( $product_categories );
+                        $col_class = $category_count <= 4 ? 'col-md-3 col-sm-6' : 'col-md-4 col-sm-6';
+                        foreach ( $product_categories as $category ) {
+                            $category_slug = $category->slug;
+                            $category_link = get_term_link( $category );
+                            $category_name = $category->name;
+                            $category_image_url = get_template_directory_uri() . '/images/categories/' . $category_slug . '.webp';
+                            ?>
+                            <div class="<?php echo $col_class; ?>">
+                                <a href="<?php echo esc_url( $category_link ); ?>" class="category-link">
+                                    <div class="category-card">
+                                        <img src="<?php echo esc_url( $category_image_url ); ?>" class="img-fluid" alt="<?php echo esc_attr( $category_name ); ?>">
+                                        <p class="category-title"><?php echo esc_html( $category_name ); ?> →</p>
+                                    </div>
+                                </a>
                             </div>
-                        </a>
-                    </div>
-                    <div class="col-md-3 col-sm-6">
-                        <a href="#" class="category-link">
-                            <div class="category-card">
-                                <img src="<?php echo get_template_directory_uri(); ?>/images/categories/category2.jpg" class="img-fluid" alt="Dranken">
-                                <p class="category-title">Dranken →</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-3 col-sm-6">
-                        <a href="#" class="category-link">
-                            <div class="category-card">
-                                <img src="<?php echo get_template_directory_uri(); ?>/images/categories/category3.jpg" class="img-fluid" alt="Oli en smaakmakers">
-                                <p class="category-title">Oli en smaakmakers →</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-3 col-sm-6">
-                        <a href="#" class="category-link">
-                            <div class="category-card">
-                                <img src="<?php echo get_template_directory_uri(); ?>/images/categories/category4.jpg" class="img-fluid" alt="Zoetigheden en honing">
-                                <p class="category-title">Zoetigheden en honing →</p>
-                            </div>
-                        </a>
-                    </div>
+                            <?php
+                        }
+                    }
+                    ?>
                 </div>
                 <div class="text-center mt-4">
-                    <a href="#" class="btn btn-primary">Alles bekijken</a>
+                    <a href="<?php echo esc_url( get_permalink( wc_get_page_id( 'shop' ) ) ); ?>" class="btn btn-primary">Alles bekijken</a>
                 </div>
             </div>
         </section>
+
 
         <!--featured category-->
          <!-- Featured Collection Section -->
